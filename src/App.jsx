@@ -78,11 +78,11 @@ function App() {
   };
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto px-4 py-8 h-screen overflow-hidden flex flex-col">
       <h1 className="text-3xl font-bold mb-6 text-center text-white">
         Candidate Dashboard
       </h1>
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 flex-1 overflow-hidden">
         <div className="lg:col-span-4 bg-black p-6 rounded-lg shadow-md border border-gray-800 self-start">
           <CandidateForm
             {...{
@@ -94,7 +94,7 @@ function App() {
           />
         </div>
 
-        <div className="lg:col-span-8 bg-black p-6 rounded-lg shadow-md border border-gray-800">
+        <div className="lg:col-span-8 bg-black p-6 rounded-lg shadow-md border border-gray-800 flex flex-col">
           <div className="flex flex-wrap justify-between items-center mb-4">
             <h2 className="text-xl font-semibold text-white">Candidates</h2>
             <div className="flex space-x-2">
@@ -176,13 +176,18 @@ function App() {
             ))}
           </div>
 
-          <CandidateList
-            candidates={sortedCandidates}
-            openCandidateModal={(c) => {
-              setSelectedCandidate(c);
-              setShowModal(true);
-            }}
-          />
+          <div
+            className="overflow-y-auto"
+            style={{ maxHeight: "calc(100vh - 450px)" }}
+          >
+            <CandidateList
+              candidates={sortedCandidates}
+              openCandidateModal={(c) => {
+                setSelectedCandidate(c);
+                setShowModal(true);
+              }}
+            />
+          </div>
 
           {candidates.length > 10 && (
             <nav className="flex justify-center mt-4 inline-flex rounded-md shadow">

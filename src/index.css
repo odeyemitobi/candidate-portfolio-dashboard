@@ -23,3 +23,12 @@ body {
 .experience-senior {
   @apply bg-purple-800 text-purple-100;
 }
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+* {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}

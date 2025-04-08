@@ -53,7 +53,7 @@ const CandidateForm = ({
   };
 
   return (
-    <>
+    <div className="flex flex-col">
       <h2 className="text-xl font-semibold mb-4 text-white">
         {isEditing ? "Edit" : "Add New"} Candidate
       </h2>
@@ -121,7 +121,7 @@ const CandidateForm = ({
               Add
             </button>
           </div>
-          <div className="mt-2 flex flex-wrap">
+          <div className="mt-2 max-h-32 overflow-y-auto flex flex-wrap gap-2">
             {formData.techStack.map((tech) => (
               <span key={tech} className="tag flex items-center">
                 {tech}
@@ -155,7 +155,7 @@ const CandidateForm = ({
           )}
         </div>
       </form>
-    </>
+    </div>
   );
 };
 

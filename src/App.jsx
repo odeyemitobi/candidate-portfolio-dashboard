@@ -78,11 +78,11 @@ function App() {
   };
 
   return (
-    <div className="container mx-auto px-4 py-8 h-screen overflow-hidden flex flex-col">
+    <div className="container mx-auto px-4 py-8 min-h-screen flex flex-col">
       <h1 className="text-3xl font-bold mb-6 text-center text-white">
         Candidate Dashboard
       </h1>
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 flex-1 overflow-hidden">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 flex-1">
         <div className="lg:col-span-4 bg-black p-6 rounded-lg shadow-md border border-gray-800 self-start">
           <CandidateForm
             {...{
@@ -178,7 +178,12 @@ function App() {
 
           <div
             className="overflow-y-auto"
-            style={{ maxHeight: "calc(100vh - 450px)" }}
+            style={{
+              maxHeight: "calc(100vh - 450px)",
+              "@media (max-width: 1023px)": {
+                maxHeight: "calc(100vh - 600px)",
+              },
+            }}
           >
             <CandidateList
               candidates={sortedCandidates}
